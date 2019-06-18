@@ -15,6 +15,7 @@ namespace PGWLib
             public ushort parameterCode;
             public string parameterValue;
 
+            // 1.5
             public override string ToString()
             {
                 return string.Format("{0}({1}): {2}", parameterName, parameterCode, parameterValue);

@@ -14,10 +14,10 @@ namespace PGWLib
     {
         public PGWLib()
         {
-            // 1.0
+            // 1.1
             System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\PGWebLib\\");
 
-            // 1.1
+            // 1.2
             int ret = Interop.PW_iInit(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData)  + "\\PGWebLib\\");
         }
 
@@ -191,7 +191,7 @@ namespace PGWLib
             // 2.5
             foreach (PW_GetData item in expectedData)
             {
-                ret = 0;
+                // ret = 0; Variavel já iniciada com o valor 0, não necessitando dessa reescrita.
                 // 2.6
                 switch (item.bTipoDeDado)
                 {
@@ -204,7 +204,7 @@ namespace PGWLib
                         return ret;
 
                     case (int)E_PWDAT.PWDAT_CARDINF:
-                        if (item.ulTipoEntradaCartao == 1)
+                        if (item.ulTipoEntradaCartao == 1) // Solicitar a digitação do número de cartão.
                         {
                             PW_GetData temp = item;
                             temp.wIdentificador = (ushort)E_PWINFO.PWINFO_CARDFULLPAN;

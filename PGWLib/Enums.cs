@@ -12,7 +12,7 @@ namespace PGWLib
     public class Enums
     {
         /// <summary>
-        /// Acionamento/controle do PIN-pad.
+        /// Acionamento/controle do PIN-pad. TESTE
         /// </summary>
         public enum E_PWPPEVT : int
         {
@@ -284,7 +284,7 @@ namespace PGWLib
             PWINFO_POSID = 17,
 
             /// <summary>
-            /// Nome do aplicativo de Automação
+            /// Nome do aplicativo da Automação Comercial.
             /// </summary>
             PWINFO_AUTNAME = 21,
 

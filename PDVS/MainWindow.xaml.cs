@@ -26,17 +26,18 @@ namespace PDVS
 
         public MainWindow()
         {
+            //1.0
             InitializeComponent();
 
             eft = new PGWLib.PGWLib();
 
-            // 1.2
+            // 1.3
             foreach (string item in Enum.GetNames(typeof(E_PWOPER)))
             {
                 cmbOper.Items.Add(item);
             }
 
-            // 1.3
+            // 1.4
             addMandatoryParameters();
         }
 
@@ -55,11 +56,13 @@ namespace PDVS
 
         private void btnExecute_Click(object sender, RoutedEventArgs e)
         {
+            // 1.6
             if (!validateFields())
             {
                 MessageBox.Show("Preencha os campos corretamente.");
                 return;
             }
+            // 1.7
             executeTransaction();
 
             confirmUndoTransaction(getTransactionResult());
@@ -81,6 +84,7 @@ namespace PDVS
 
         #endregion
 
+        // 1.4
         private void addMandatoryParameters()
         {
             lstParameters.Items.Add(new PW_Parameter(E_PWINFO.PWINFO_AUTNAME.ToString(), (int)E_PWINFO.PWINFO_AUTNAME, "PDVS"));
@@ -127,13 +131,13 @@ namespace PDVS
 
         private void executeTransaction()
         {
-            // 1.6
+            // 1.8
             E_PWOPER operation = (E_PWOPER)Enum.Parse(typeof(E_PWOPER), cmbOper.SelectedValue.ToString());
 
-            // 1.7
+            // 1.9
             PGWLib.PGWLib eft = new PGWLib.PGWLib();
 
-            // 1.9
+            // 2.0
             int ret = eft.startTransaction(operation, lstParameters.Items.Cast<PW_Parameter>().ToList());
             if (ret != 0)
             {
